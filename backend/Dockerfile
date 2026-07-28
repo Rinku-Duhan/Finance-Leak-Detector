@@ -16,4 +16,4 @@ EXPOSE 8000
 # this container's startup -- see README for the run order. Baking a
 # migration step into the container start is a common source of race
 # conditions when multiple instances start at once.
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
