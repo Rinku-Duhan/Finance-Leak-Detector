@@ -4,6 +4,9 @@ A production-style transaction intelligence platform that analyzes bank/UPI stat
 
 ![CI](https://github.com/Rinku-Duhan/finance-leak-detector/actions/workflows/ci.yml/badge.svg)
 
+🔗 **Live demo**: https://finance-leak-frontend.onrender.com
+   (Free tier — first load may take 30-60s to wake up)
+
 ## Why this project
 
 This project exists to demonstrate production software engineering — SQL, auth, cloud deployment, CI/CD, and testing discipline — on top of already-proven ML/data skills. The anomaly detection itself is deliberately **100% deterministic and rule-based**, not a black-box model: every flagged leak comes with explicit evidence (amounts, dates, percentage changes) and a severity level derived from documented thresholds. No confidence scores — a rule-based detector can't produce a mathematically defensible probability, so evidence + severity replace that honestly instead.
