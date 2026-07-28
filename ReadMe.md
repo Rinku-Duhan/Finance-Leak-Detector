@@ -10,7 +10,7 @@ This project exists to demonstrate production software engineering — SQL, auth
 
 ## Architecture
 
-![Architecture diagram](docs\detailed_system_architecture.svg)
+<img src="docs\detailed_system_architecture.svg" alt="Architecture diagram" width="700"/>
 
 - **Backend**: FastAPI + SQLAlchemy + Alembic, deployed on Render
 - **Database**: PostgreSQL, hosted on Neon (serverless, scales to zero)
