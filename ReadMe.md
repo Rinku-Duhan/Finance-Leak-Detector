@@ -2,7 +2,7 @@
 
 A production-style transaction intelligence platform that analyzes bank/UPI statements to detect spending anomalies — duplicate charges, price creep, dormant subscriptions, and category drift — using **deterministic, evidence-based detection** enhanced with narrow, well-justified LLM capabilities.
 
-![CI](https://github.com/Rinku-Duhan/finance-leak-detector/.github/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Rinku-Duhan/finance-leak-detector/actions/workflows/ci.yml/badge.svg)
 
 ## Why this project
 
