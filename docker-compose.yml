@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    environment:
+      # Inside Docker's network, "backend" resolves to the backend
+      # container via Compose's built-in DNS -- 127.0.0.1 would NOT work
+      # here since each container is its own network namespace.
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
