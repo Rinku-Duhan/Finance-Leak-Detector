@@ -9,3 +9,7 @@ app.include_router(transactions.router)
 app.include_router(uploads.router)
 app.include_router(dashboard.router)
 app.include_router(categories.router)
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
