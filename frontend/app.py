@@ -6,6 +6,17 @@ st.set_page_config(page_title="Finance Leak Detector", page_icon="💸")
 
 st.title("💸 Finance Leak Detector")
 
+
+def _extract_error(resp) -> str:
+    """Safely pull an error message out of a response, even if it's not
+    JSON -- e.g. a raw Render gateway error page during a cold start,
+    which is a 'successful' HTTP response with a non-JSON body."""
+    try:
+        return resp.json().get("detail", f"Request failed (status {resp.status_code})")
+    except Exception:
+        return f"Request failed (status {resp.status_code}). If the server was asleep, please try again in a moment."
+
+
 if is_logged_in():
     st.success(f"Logged in as **{st.session_state.get('user_email', 'you')}**")
     st.write("Use the sidebar to upload a statement, view your dashboard, or check your upload history.")
@@ -33,8 +44,7 @@ else:
                 st.success("Logged in!")
                 st.rerun()
             else:
-                detail = resp.json().get("detail", "Login failed")
-                st.error(detail)
+                st.error(_extract_error(resp))
 
     with tab_signup:
         with st.form("signup_form"):
@@ -52,5 +62,4 @@ else:
                 st.success("Account created and logged in!")
                 st.rerun()
             else:
-                detail = resp.json().get("detail", "Signup failed")
-                st.error(detail)
+                st.error(_extract_error(resp))
