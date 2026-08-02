@@ -6,9 +6,6 @@ st.set_page_config(page_title="Finance Leak Detector", page_icon="💸")
 
 st.title("💸 Finance Leak Detector")
 
-DEMO_EMAIL = "demo@example.com"
-DEMO_PASSWORD = "DemoAccount2026!"
-
 if is_logged_in():
     st.success(f"Logged in as **{st.session_state.get('user_email', 'you')}**")
     st.write("Use the sidebar to upload a statement, view your dashboard, or check your upload history.")
@@ -18,23 +15,6 @@ if is_logged_in():
         st.rerun()
 
 else:
-    st.info(
-        "👋 First time here? Click **Try Demo Account** below to instantly see a "
-        "pre-loaded dashboard with real detected leaks \u2014 no signup needed."
-    )
-    if st.button("🎯 Try Demo Account", type="primary"):
-        resp = login(DEMO_EMAIL, DEMO_PASSWORD)
-        if resp.status_code == 200:
-            data = resp.json()
-            st.session_state["access_token"] = data["access_token"]
-            st.session_state["refresh_token"] = data["refresh_token"]
-            st.session_state["user_email"] = DEMO_EMAIL
-            st.rerun()
-        else:
-            st.error("Demo account is temporarily unavailable \u2014 try signing up below instead.")
-
-    st.divider()
-
     tab_login, tab_signup = st.tabs(["Log in", "Sign up"])
 
     with tab_login:
