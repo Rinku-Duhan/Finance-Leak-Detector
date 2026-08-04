@@ -34,7 +34,7 @@ def require_login():
 def _post(url, **kwargs):
     try:
         return requests.post(url, timeout=REQUEST_TIMEOUT, **kwargs)
-    except requests.exceptions.RequestException as e:
+    except requests.exceptions.RequestException:
         st.error(
             "Could not reach the server -- it may be waking up from sleep "
             "(free-tier hosting). Please wait a few seconds and try again."
@@ -45,7 +45,7 @@ def _post(url, **kwargs):
 def _get(url, **kwargs):
     try:
         return requests.get(url, timeout=REQUEST_TIMEOUT, **kwargs)
-    except requests.exceptions.RequestException as e:
+    except requests.exceptions.RequestException:
         st.error(
             "Could not reach the server -- it may be waking up from sleep "
             "(free-tier hosting). Please wait a few seconds and try again."

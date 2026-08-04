@@ -1,2 +1,0 @@
-{"email": "demo@example.com", "password": "DemoAccount2026!"}
-"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MDNlMzdmOS04Njg1LTRlMTgtOThlYS01NTI3YmZmMGY3NWMiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg1NTkzODMzfQ.arwYM5_938IGv1ZJm8tZiCcH_LqINc4H0jm9hLNL168"
