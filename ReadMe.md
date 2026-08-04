@@ -4,7 +4,7 @@ A production-style transaction intelligence platform that analyzes bank/UPI stat
 
 ![CI](https://github.com/Rinku-Duhan/finance-leak-detector/actions/workflows/ci.yml/badge.svg)
 
-🔗 **Live demo**: [https://finance-leak-frontend.onrender.com](https://finance-leak-detector-1.onrender.com/)
+🔗 **Live demo**: [[https://finance-leak-frontend.onrender.com](https://finance-leak-detector-1.onrender.com/)](https://finance-leak-detector-nel1.onrender.com)
    (Free tier — first load may take 30-60s to wake up)
 
 ## Why this project
