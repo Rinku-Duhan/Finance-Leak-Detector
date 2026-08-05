@@ -12,7 +12,9 @@ API_BASE_URL = os.getenv("API_BASE_URL", "http://127.0.0.1:8000")
 # Generous timeout to survive Render free-tier cold starts (backend can
 # take 30-60s to wake up from sleep on the first request).
 REQUEST_TIMEOUT = 90
-
+DEFAULT_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) FinanceLeakDetector/1.0"
+}
 
 def get_auth_headers() -> dict:
     token = st.session_state.get("access_token")
@@ -31,9 +33,11 @@ def require_login():
         st.stop()
 
 
+
 def _post(url, **kwargs):
+    headers = {**DEFAULT_HEADERS, **kwargs.pop("headers", {})}
     try:
-        return requests.post(url, timeout=REQUEST_TIMEOUT, **kwargs)
+        return requests.post(url, timeout=REQUEST_TIMEOUT, headers=headers, **kwargs)
     except requests.exceptions.RequestException:
         st.error(
             "Could not reach the server -- it may be waking up from sleep "
@@ -43,8 +47,9 @@ def _post(url, **kwargs):
 
 
 def _get(url, **kwargs):
+    headers = {**DEFAULT_HEADERS, **kwargs.pop("headers", {})}
     try:
-        return requests.get(url, timeout=REQUEST_TIMEOUT, **kwargs)
+        return requests.get(url, timeout=REQUEST_TIMEOUT, headers=headers, **kwargs)
     except requests.exceptions.RequestException:
         st.error(
             "Could not reach the server -- it may be waking up from sleep "
