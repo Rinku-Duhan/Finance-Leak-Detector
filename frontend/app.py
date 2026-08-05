@@ -11,13 +11,22 @@ DEMO_PASSWORD = "DemoAccount2026!"
 
 
 def _extract_error(resp) -> str:
-    """Safely pull an error message out of a response, even if it's not
-    JSON -- e.g. a raw gateway error page during a cold start, which is
-    a 'successful' HTTP response with a non-JSON body."""
+    """Temporary debug version -- shows full response details."""
+    debug_info = f"Status: {resp.status_code}\nHeaders: {dict(resp.headers)}\nBody: {resp.text[:500]}"
+    st.code(debug_info)
     try:
         return resp.json().get("detail", f"Request failed (status {resp.status_code})")
     except Exception:
-        return f"Request failed (status {resp.status_code}). If the server was asleep, please try again in a moment."
+        return f"Request failed (status {resp.status_code})."
+
+# def _extract_error(resp) -> str:
+#     """Safely pull an error message out of a response, even if it's not
+#     JSON -- e.g. a raw gateway error page during a cold start, which is
+#     a 'successful' HTTP response with a non-JSON body."""
+#     try:
+#         return resp.json().get("detail", f"Request failed (status {resp.status_code})")
+#     except Exception:
+#         return f"Request failed (status {resp.status_code}). If the server was asleep, please try again in a moment."
 
 
 if is_logged_in():
